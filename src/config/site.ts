@@ -1,10 +1,13 @@
+import { publicAsset } from "@/lib/paths";
 const image = (id: string, alt: string) => ({
-  src: `/client/${id === "hero" ? "architecture" : id === "house" ? "retreat" : id}.jpg`,
+  src: publicAsset(
+    `/client/${id === "hero" ? "architecture" : id === "house" ? "retreat" : id}.jpg`,
+  ),
   alt,
 });
 export const siteConfig = {
   locale: "pt-BR",
-  url: "https://example.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
   business: {
     name: "atelier",
     logo: null as {
@@ -25,7 +28,7 @@ export const siteConfig = {
     title: "Atelier — Arquitetura para viver com presença",
     description:
       "Um estúdio de arquitetura e interiores. Projetos que respeitam o lugar, valorizam a matéria e acolhem a vida.",
-    image: "/client/architecture.jpg",
+    image: publicAsset("/client/architecture.jpg"),
   },
   contact: {
     phone: "551130304871",

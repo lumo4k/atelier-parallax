@@ -2,6 +2,14 @@
 
 Next.js App Router, TypeScript, Tailwind CSS, GSAP/ScrollTrigger e Lenis. Marca, projetos e depoimento são demonstrações fictícias.
 
+## GitHub Pages
+
+O workflow `.github/workflows/pages.yml` publica automaticamente pushes na branch `main`. No repositório, selecione **Settings → Pages → Source → GitHub Actions** e envie o código, incluindo o `package-lock.json` e o workflow. O Actions detecta o caminho e a URL do Pages, gera a pasta `out` e publica o artefato. Domínio próprio e repositório `usuario.github.io` usam caminho vazio automaticamente. O workflow utiliza as ações oficiais do GitHub: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+
+Para gerar localmente, execute `npm run build:pages -- /nome-do-repositorio`. Para domínio próprio ou site na raiz, execute `npm run build:pages`. A exportação desabilita o otimizador de servidor do Next.js e serve as imagens locais diretamente. O build normal (`npm run build`) mantém a otimização de imagens para Vercel. Não há necessidade de commitar `out`, `.next` ou `node_modules`.
+
+`NEXT_PUBLIC_SITE_URL` permite configurar o endereço publicado em um build manual; no Actions ele é definido automaticamente. `node scripts/check-export.mjs /nome-do-repositorio` valida os assets e a troca de tema na exportação local sob o mesmo subdiretório.
+
 ```bash
 npm install
 npm run dev
